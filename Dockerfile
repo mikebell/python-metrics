@@ -1,13 +1,15 @@
 FROM python:3
 
-ADD requirements.txt /
+ADD requirements.txt /opt/
 
-RUN pip install -r requirements.txt
+RUN pip install -r /opt/requirements.txt
 
-ADD src/app.py /
+ADD src/app.py /opt
 
-# ENTRYPOINT [ "python" ]
+RUN adduser --uid 1001 python
 
-# CMD [ "app.py" ]
+USER 1001
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+WORKDIR /opt/
+
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=8080"]
