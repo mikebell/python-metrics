@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-metrics
+spec:
+  selector:
+    matchLabels:
+      app: python-metrics
+  template:
+    metadata:
+      labels:
+        app: python-metrics
+    spec:
+      containers:
+      - name: python-metrics
+        image: mikebell/python-metrics:1.0.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
