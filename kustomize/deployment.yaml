@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: python-metrics
-        image: mikebell/python-metrics:1.1.0
+        image: mikebell/python-metrics:1.2.0
         resources:
           limits:
             memory: "128Mi"
